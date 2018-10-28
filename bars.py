@@ -17,7 +17,7 @@ def load_data(file_name):
         data_string = names, adress, latitude, longitude, size
         string_container.append(data_string)
 
-    df = pd.DataFrame(data, columns=[
+    df = pd.DataFrame(string_container, columns=[
         'Name', 'Address', 'Latitude', 'Longtitude', 'Size'])
 
     return df
