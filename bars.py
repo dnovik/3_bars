@@ -4,6 +4,7 @@ import numpy as np
 
 def load_data(file):
     data = []
+    file = open(file, encoding='utf-8').read()
     json_data = json.loads(file)
     
     for i in json_data['features']:
