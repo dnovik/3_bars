@@ -4,18 +4,18 @@ import numpy as np
 
 
 def load_data(file):
-    data = []
-    file = open(file, encoding='utf-8').read()
-    json_data = json.loads(file)
+    string_container = []
+    open_file = open(file, encoding='utf-8').read()
+    json_data = json.loads(open_file)
 
-    for i in json_data['features']:
-        latitude = i['geometry']['coordinates'][0]
-        longitude = i['geometry']['coordinates'][1]
-        size = i['properties']['Attributes']['SeatsCount']
-        names = i['properties']['Attributes']['Name']
-        adress = i['properties']['Attributes']['Address']
+    for line in json_data['features']:
+        latitude = line['geometry']['coordinates'][0]
+        longitude = line['geometry']['coordinates'][1]
+        size = line['properties']['Attributes']['SeatsCount']
+        names = line['properties']['Attributes']['Name']
+        adress = line['properties']['Attributes']['Address']
         data_string = names, adress, latitude, longitude, size
-        data.append(data_string)
+        string_container.append(data_string)
 
     df = pd.DataFrame(data, columns=[
         'Name', 'Address', 'Latitude', 'Longtitude', 'Size'])
