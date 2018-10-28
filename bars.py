@@ -3,9 +3,9 @@ import pandas as pd
 import numpy as np
 
 
-def load_data(file):
+def load_data(file_name):
     string_container = []
-    open_file = open(file, encoding='utf-8').read()
+    open_file = open(file_name, encoding='utf-8').read()
     json_data = json.loads(open_file)
 
     for line in json_data['features']:
